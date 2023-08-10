@@ -1,22 +1,52 @@
-import React from 'react';
-import {Switch, Route, Link} from 'react-router-dom';
-import { Layout, Typography, Space } from 'antd';
-import './App.css';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import { Layout, Typography, Space } from "antd";
+import "./App.css";
+import {
+  Navbar,
+  HomePage,
+  Exchanges,
+  Cryptocurrencies,
+  CryptoDetails,
+  News,
+} from "./components";
 
-function App() {
+const App = () => {
   return (
     <div className="app">
-      <div className='navbar'>
-
+      <div className="navbar">
+        <Navbar />
       </div>
-      <div className='main'>
+      <div className="main">
+        <Layout>
+          <div className="routes">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/exchanges" element={<Exchanges />} />
+              <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
+              <Route path="/cryptoDetails" element={<CryptoDetails />} />
+              <Route path="/news" element={<News />} />
+            </Routes>
+          </div>
+        </Layout>
 
-      </div>
-      <div className='footer'>
-        
+        <div className="footer">
+          <Typography.Title
+            level={5}
+            style={{ color: "white", textAlign: "center" }}
+          >
+            CrytoVerse <br />
+            All rights reserved
+          </Typography.Title>
+          <Space>
+            <Link to="/">Home</Link>
+            <Link to="/exchanges">Exchanges</Link>
+            <Link to="/news">News</Link>
+          </Space>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;
